@@ -1,0 +1,10 @@
+## Specific extensions
+*.code-workspace
+
+
+## Specific files
+package-lock.json
+
+
+## Specific packages
+/node_modules
