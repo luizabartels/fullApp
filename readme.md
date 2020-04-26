@@ -1,0 +1,1 @@
+Esta aplicação foi desenvolvida com a finalidade de aprendizado seguindo [este tutorial](https://www.youtube.com/watch?v=LLqq6FemMNQ&list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&index=1).
