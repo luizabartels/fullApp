@@ -17,6 +17,7 @@
     const Categoria = mongoose.model('categorias')
     const passport = require('passport')
     require('./config/auth')(passport)
+    const db = require('./config/db')
 // Configurations
     //Session
         app.use(session({
@@ -32,6 +33,7 @@
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
             res.locals.error = req.flash("error")
+            res.locals.user = req.user || null
             next() // Tem que colocar o next, caso contrário ele para a aplicação aqui. Em cada página nova o middleware é chamado.
         })
     //Body Parser
@@ -45,7 +47,7 @@
 
     //Mongoose
         mongoose.Promise = global.Promise
-        mongoose.connect('mongodb://localhost/blogApp', {useUnifiedTopology: true, useNewUrlParser: true,
+        mongoose.connect(db.mongoURI, {useUnifiedTopology: true, useNewUrlParser: true,
         }).then(() => {
             console.log("MongoDB conectado")
         }).catch((err) => {
@@ -118,7 +120,7 @@
 
 //Others
 
-    const PORT = 8081
+    const PORT = process.env.PORT || 8081
     app.listen(PORT, () => {
         console.log("Servidor rodando em http://localhost:8081")
     })
